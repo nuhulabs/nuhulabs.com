@@ -2,7 +2,7 @@
     .name = .nuhulabs,
     .version = "0.0.0",
     .fingerprint = 0x6da4b0eb76c588be,
-    .minimum_zig_version = "0.17.0-dev.1773+434c9fe4d",
+    .minimum_zig_version = "0.17.0-dev.1456+2b1c6633a",
     .dependencies = .{
         .ziex = .{
             .url = "git+https://github.com/ziex-dev/ziex#04e7f38d0cba2b9a62eac9982783be9f0dce78e4",
