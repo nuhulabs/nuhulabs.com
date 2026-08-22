@@ -1,0 +1,111 @@
+const Principle = struct {
+    title: []const u8,
+    desc: []const u8,
+};
+
+const principles = [_]Principle{
+    .{
+        .title = "High quality",
+        .desc = "Careful engineering and a high bar for craft in every detail we ship.",
+    },
+    .{
+        .title = "Scalable",
+        .desc = "Architected to grow with demand, from the first user to the millionth.",
+    },
+    .{
+        .title = "Maintainable",
+        .desc = "Clean, readable systems that stay easy to change long after launch.",
+    },
+    .{
+        .title = "Built to last",
+        .desc = "Durable foundations and sensible choices, made for the long run.",
+    },
+};
+
+pub fn Page(ctx: zx.PageContext) !zx.Component {
+    return (
+        <div @allocator={ctx.arena} class="site">
+            <main>
+                <section class="hero">
+                    <div class="hero-inner">
+                        <p class="site-brand">Nuhu Labs</p>
+                        <p class="eyebrow">Product studio</p>
+                        <h1 class="hero-title">
+                            <span class="hero-line">Focused</span>
+                            <span class="hero-line hero-line-accent">products.</span>
+                        </h1>
+                        <p class="hero-lede">
+                            We build software engineered to last; high quality, scalable, and maintainable. For teams who care about craft as much as shipping.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#products" class="btn btn-primary">See our work</a>
+                            <a href="#contact" class="btn btn-ghost">Work with us</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual" aria-hidden="true">
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="orbit orbit-3"></div>
+                        <div class="orbit-core"></div>
+                    </div>
+                </section>
+
+                <section id="products" class="section">
+                    <div class="section-head">
+                        <p class="eyebrow">Products</p>
+                        <h2>Shipped with intention</h2>
+                    </div>
+
+                    <a href="/byakaron" class="product-row">
+                        <div class="product-row-main">
+                            <span class="product-script">ব্যাকারণ</span>
+                            <div>
+                                <h3 class="product-name">Byakaron</h3>
+                                <p class="product-desc">
+                                    Bangla keyboard with spell check and a native UI.
+                                </p>
+                            </div>
+                        </div>
+                        <span class="product-arrow" aria-hidden="true">→</span>
+                    </a>
+                </section>
+
+                <section id="studio" class="section">
+                    <div class="section-head">
+                        <p class="eyebrow">How we build</p>
+                        <h2>Principles we don't compromise on</h2>
+                    </div>
+
+                    <dl class="principles-list">
+                        {for (principles) |p| (
+                            <div class="principle-item">
+                                <dt>{p.title}</dt>
+                                <dd>{p.desc}</dd>
+                            </div>
+                        )}
+                    </dl>
+                </section>
+
+                <section id="contact" class="section contact">
+                    <p class="eyebrow">Work with us</p>
+                    <h2>Have something to build?</h2>
+                    <p class="contact-lede">
+                        Whether it's a product from scratch or an existing system that needs
+                        sharper engineering, Nuhu Labs is open to select partnerships. Tell us
+                        what you have in mind.
+                    </p>
+                    <a href="mailto:hello@nuhulabs.com" class="btn btn-primary">
+                        hello@nuhulabs.com
+                        <span class="arrow" aria-hidden="true">→</span>
+                    </a>
+                </section>
+            </main>
+
+            <Footer />
+        </div>
+    );
+}
+
+const zx = @import("zx");
+const Footer = @import("./components.zx").Footer;

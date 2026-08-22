@@ -1,0 +1,128 @@
+const Feature = struct {
+    title: []const u8,
+    desc: []const u8,
+};
+
+const features = [_]Feature{
+    .{
+        .title = "Spell checker",
+        .desc = "Helps you write correctly spelled Bangla.",
+    },
+    .{
+        .title = "Native UI",
+        .desc = "Feels at home on every platform it runs on.",
+    },
+    .{
+        .title = "Fast",
+        .desc = "Feels snappy and responsive like the native keyboard.",
+    },
+};
+
+pub fn Page(ctx: zx.PageContext) !zx.Component {
+    return (
+        <div @allocator={ctx.arena} class="site">
+            <main>
+                <section class="product-hero">
+                    <a href="/" class="back-link">← Nuhu Labs</a>
+                    <p class="eyebrow">ব্যাকারণ · Byakaron</p>
+                    <h1 class="product-hero-title">Bangla keyboard with spell check.</h1>
+                    <p class="product-hero-tagline">The last Bangla keyboard you'll ever need.</p>
+                    <a href="#download" class="btn btn-primary">Download for macOS →</a>
+                </section>
+
+                <section id="download" class="platform-tabs">
+                    <input type="radio" name="platform" id="tab-macos" class="tab-input" checked="" />
+                    <input type="radio" name="platform" id="tab-ios" class="tab-input" />
+                    <input type="radio" name="platform" id="tab-android" class="tab-input" />
+                    <input type="radio" name="platform" id="tab-windows" class="tab-input" />
+
+                    <div class="platform-tab-list" role="tablist" aria-label="Platforms">
+                        <label for="tab-macos" class="platform-tab is-available" role="tab">
+                            <span class="platform-name">macOS</span>
+                            <span class="platform-status">Available</span>
+                        </label>
+                        <label for="tab-ios" class="platform-tab is-soon" role="tab">
+                            <span class="platform-name">iOS</span>
+                            <span class="platform-status">Coming soon</span>
+                        </label>
+                        <label for="tab-android" class="platform-tab is-soon" role="tab">
+                            <span class="platform-name">Android</span>
+                            <span class="platform-status">Coming soon</span>
+                        </label>
+                        <label for="tab-windows" class="platform-tab is-soon" role="tab">
+                            <span class="platform-name">Windows</span>
+                            <span class="platform-status">Coming soon</span>
+                        </label>
+                    </div>
+
+                    <div class="platform-panels">
+                        <article class="platform-panel panel-macos">
+                            <div class="platform-panel-text">
+                                <h2>Byakaron for macOS</h2>
+                                <p>
+                                    A native macOS keyboard extension with real-time Bangla spell
+                                    checking.
+                                </p>
+                            </div>
+                            <div class="platform-panel-media">
+                                <span class="media-label">macOS demo</span>
+                            </div>
+                        </article>
+
+                        <article class="platform-panel panel-ios">
+                            <div class="platform-panel-text">
+                                <h2>Byakaron for iOS</h2>
+                                <p>
+                                    A custom keyboard for iPhone and iPad with Bangla spell check
+                                    built in. Coming soon.
+                                </p>
+                            </div>
+                            <div class="platform-panel-media">
+                                <span class="media-label media-label-dim">iOS demo coming soon</span>
+                            </div>
+                        </article>
+
+                        <article class="platform-panel panel-android">
+                            <div class="platform-panel-text">
+                                <h2>Byakaron for Android</h2>
+                                <p>
+                                    A Bangla keyboard with spell check for Android devices. Coming
+                                    soon.
+                                </p>
+                            </div>
+                            <div class="platform-panel-media">
+                                <span class="media-label media-label-dim">Android demo coming soon</span>
+                            </div>
+                        </article>
+
+                        <article class="platform-panel panel-windows">
+                            <div class="platform-panel-text">
+                                <h2>Byakaron for Windows</h2>
+                                <p>Native Windows support with Bangla spell checking. Coming soon.</p>
+                            </div>
+                            <div class="platform-panel-media">
+                                <span class="media-label media-label-dim">Windows demo coming soon</span>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="features-section">
+                    <dl class="features-list">
+                        {for (features) |f| (
+                            <div class="feature-item">
+                                <dt>{f.title}</dt>
+                                <dd>{f.desc}</dd>
+                            </div>
+                        )}
+                    </dl>
+                </section>
+            </main>
+
+            <Footer />
+        </div>
+    );
+}
+
+const zx = @import("zx");
+const Footer = @import("../components.zx").Footer;
