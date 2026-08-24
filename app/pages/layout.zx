@@ -1,4 +1,5 @@
 pub fn Layout(ctx: zx.LayoutContext, children: zx.Component) zx.Component {
+    const build_id = ctx.fmt("{x}", .{randInt(ctx.io, u32)}) catch "";
     return (
         <html @allocator={ctx.arena} lang="en">
             <head>
@@ -12,7 +13,7 @@ pub fn Layout(ctx: zx.LayoutContext, children: zx.Component) zx.Component {
                 <title>Nuhu Labs</title>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <link rel="icon" type="image/png" href="/favicon.png" />
-                <link rel="stylesheet" href="/assets/style.css" />
+                <link rel="stylesheet" href=`/assets/style.css?v={build_id}` />
             </head>
 
             <body>
@@ -25,4 +26,11 @@ pub fn Layout(ctx: zx.LayoutContext, children: zx.Component) zx.Component {
     );
 }
 
+fn randInt(io: std.Io, comptime T: type) T {
+    var x: T = undefined;
+    io.random(@ptrCast(&x));
+    return x;
+}
+
+const std = @import("std");
 const zx = @import("zx");
