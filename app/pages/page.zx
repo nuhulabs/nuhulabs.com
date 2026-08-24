@@ -48,11 +48,11 @@ pub fn Page(ctx: zx.PageContext) !zx.Component {
                             <div class="orbit orbit-1"></div>
                             <div class="orbit orbit-2"></div>
                             <div class="orbit orbit-3"></div>
-                            <span class="star star-a"></span>
-                            <span class="star star-b"></span>
-                            <span class="star star-c"></span>
-                            <span class="star star-d"></span>
-                            <span class="star star-e"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
                             <div class="orbit-core"></div>
                         </div>
                     </div>
