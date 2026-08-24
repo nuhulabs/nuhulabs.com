@@ -29,10 +29,9 @@ pub fn Page(ctx: zx.PageContext) !zx.Component {
                 <section class="hero">
                     <div class="hero-inner">
                         <p class="site-brand">Nuhu Labs</p>
-                        <p class="eyebrow">Product studio</p>
                         <h1 class="hero-title">
-                            <span class="hero-line">Focused</span>
-                            <span class="hero-line hero-line-accent">products.</span>
+                            <span class="hero-line">Software that</span>
+                            <span class="hero-line hero-line-accent">feels at ease.</span>
                         </h1>
                         <p class="hero-lede">
                             We build software engineered to last; high quality, scalable, and maintainable. For teams who care about craft as much as shipping.
@@ -44,17 +43,24 @@ pub fn Page(ctx: zx.PageContext) !zx.Component {
                     </div>
 
                     <div class="hero-visual" aria-hidden="true">
-                        <div class="orbit orbit-1"></div>
-                        <div class="orbit orbit-2"></div>
-                        <div class="orbit orbit-3"></div>
-                        <div class="orbit-core"></div>
+                        <div class="galaxy">
+                            <div class="nebula"></div>
+                            <div class="orbit orbit-1"></div>
+                            <div class="orbit orbit-2"></div>
+                            <div class="orbit orbit-3"></div>
+                            <span class="star star-a"></span>
+                            <span class="star star-b"></span>
+                            <span class="star star-c"></span>
+                            <span class="star star-d"></span>
+                            <span class="star star-e"></span>
+                            <div class="orbit-core"></div>
+                        </div>
                     </div>
                 </section>
 
                 <section id="products" class="section">
                     <div class="section-head">
                         <p class="eyebrow">Products</p>
-                        <h2>Shipped with intention</h2>
                     </div>
 
                     <a href="/byakaron" class="product-row">
@@ -74,7 +80,7 @@ pub fn Page(ctx: zx.PageContext) !zx.Component {
                 <section id="studio" class="section">
                     <div class="section-head">
                         <p class="eyebrow">How we build</p>
-                        <h2>Principles we don't compromise on</h2>
+                        <h2>Principles rooted in peace of mind</h2>
                     </div>
 
                     <dl class="principles-list">
@@ -92,8 +98,8 @@ pub fn Page(ctx: zx.PageContext) !zx.Component {
                     <h2>Have something to build?</h2>
                     <p class="contact-lede">
                         Whether it's a product from scratch or an existing system that needs
-                        sharper engineering, Nuhu Labs is open to select partnerships. Tell us
-                        what you have in mind.
+                        sharper, calmer engineering, Nuhu Labs is open to select partnerships.
+                        {" "}Tell us what you have in mind.
                     </p>
                     <a href="mailto:hello@nuhulabs.com" class="btn btn-primary">
                         hello@nuhulabs.com

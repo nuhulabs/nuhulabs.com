@@ -6,16 +6,12 @@ pub fn Layout(ctx: zx.LayoutContext, children: zx.Component) zx.Component {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta
                     name="description"
-                    content="Nuhu Labs is a product studio building high-quality software that scales and stays maintainable."
+                    content="Nuhu Labs is a product studio building high-quality software that scales, stays maintainable, and brings peace of mind."
                 />
-                <meta name="theme-color" content="#08080a" />
-                <title>Nuhu Labs — Product Studio</title>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap"
-                    rel="stylesheet"
-                />
+                <meta name="theme-color" content="#6EE7B7" />
+                <title>Nuhu Labs</title>
+                <link rel="icon" href="/favicon.ico" sizes="any" />
+                <link rel="icon" type="image/png" href="/favicon.png" />
                 <link rel="stylesheet" href="/assets/style.css" />
             </head>
 

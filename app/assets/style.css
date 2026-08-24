@@ -17,8 +17,8 @@
     --accent-dim: rgba(110, 231, 183, 0.1);
     --line: rgba(255, 255, 255, 0.07);
     --line-strong: rgba(255, 255, 255, 0.12);
-    --font-sans: "Instrument Sans", system-ui, sans-serif;
-    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --max-w: 1080px;
 }
 
@@ -69,7 +69,7 @@ a {
     max-height: 560px;
     top: -20%;
     right: -10%;
-    background: radial-gradient(circle, rgba(110, 231, 183, 0.14) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(110, 231, 183, 0.12) 0%, transparent 70%);
 }
 
 .glow-b {
@@ -79,7 +79,7 @@ a {
     max-height: 440px;
     bottom: 10%;
     left: -10%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(120, 150, 200, 0.1) 0%, transparent 70%);
 }
 
 /* ── Layout ─────────────────────────────────────────────────────── */
@@ -179,15 +179,32 @@ a {
 .hero-visual {
     position: relative;
     width: 100%;
-    max-width: 360px;
+    max-width: 380px;
     aspect-ratio: 1;
     margin: 0 auto;
+}
+
+.galaxy {
+    position: absolute;
+    inset: 0;
+}
+
+.nebula {
+    position: absolute;
+    inset: 12%;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 40% 35%, rgba(110, 231, 183, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 65% 60%, rgba(140, 170, 220, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(110, 231, 183, 0.06) 0%, transparent 70%);
+    filter: blur(2px);
+    animation: breathe 8s ease-in-out infinite;
 }
 
 .orbit {
     position: absolute;
     border-radius: 50%;
-    border: 1px solid var(--line);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -196,22 +213,50 @@ a {
 .orbit-1 {
     width: 100%;
     height: 100%;
-    animation: spin 30s linear infinite;
+    border-color: rgba(110, 231, 183, 0.1);
+    animation: spin 48s linear infinite;
 }
 
 .orbit-2 {
-    width: 70%;
-    height: 70%;
-    border-color: rgba(110, 231, 183, 0.12);
-    animation: spin 22s linear infinite reverse;
+    width: 68%;
+    height: 68%;
+    border-color: rgba(140, 170, 220, 0.12);
+    animation: spin 36s linear infinite reverse;
 }
 
 .orbit-3 {
-    width: 42%;
-    height: 42%;
-    border-style: dashed;
-    border-color: rgba(255, 255, 255, 0.05);
-    animation: spin 16s linear infinite;
+    width: 38%;
+    height: 38%;
+    border-style: solid;
+    border-color: rgba(110, 231, 183, 0.08);
+    animation: spin 28s linear infinite;
+}
+
+.orbit-1::after,
+.orbit-2::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(110, 231, 183, 0.5);
+}
+
+.orbit-1::after {
+    width: 5px;
+    height: 5px;
+    top: -2.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.85;
+}
+
+.orbit-2::after {
+    width: 4px;
+    height: 4px;
+    bottom: 18%;
+    right: -2px;
+    background: rgba(180, 200, 240, 0.9);
+    box-shadow: 0 0 8px rgba(160, 180, 230, 0.45);
 }
 
 .orbit-core {
@@ -219,28 +264,48 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: var(--accent);
-    opacity: 0.9;
-    box-shadow: 0 0 48px rgba(110, 231, 183, 0.3);
+    background:
+        radial-gradient(circle at 35% 30%, #9af0cb 0%, var(--accent) 45%, rgba(60, 160, 120, 0.9) 100%);
+    box-shadow:
+        0 0 32px rgba(110, 231, 183, 0.35),
+        0 0 72px rgba(110, 231, 183, 0.15);
+    animation: breathe-core 6s ease-in-out infinite;
 }
 
-.orbit-1::after {
-    content: "";
+.star {
     position: absolute;
-    width: 6px;
-    height: 6px;
     border-radius: 50%;
-    background: var(--accent);
-    top: -3px;
-    left: 50%;
-    transform: translateX(-50%);
+    background: rgba(230, 240, 255, 0.7);
+    box-shadow: 0 0 6px rgba(200, 220, 255, 0.4);
+    animation: twinkle 4s ease-in-out infinite;
 }
+
+.star-a { width: 2px; height: 2px; top: 14%; left: 22%; animation-delay: 0s; }
+.star-b { width: 3px; height: 3px; top: 28%; right: 16%; animation-delay: 1.2s; background: rgba(110, 231, 183, 0.8); }
+.star-c { width: 2px; height: 2px; bottom: 22%; left: 18%; animation-delay: 2s; }
+.star-d { width: 2px; height: 2px; bottom: 30%; right: 24%; animation-delay: 0.6s; background: rgba(160, 190, 240, 0.85); }
+.star-e { width: 2px; height: 2px; top: 48%; left: 8%; animation-delay: 2.8s; }
 
 @keyframes spin {
     to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.06); opacity: 1; }
+}
+
+@keyframes breathe-core {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.06); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
 }
 
 /* ── Buttons ────────────────────────────────────────────────────── */
