@@ -17,6 +17,10 @@ pub fn build(b: *std.Build) !void {
     });
 
     // --- Ziex setup: wires dependencies and adds `zx`/`dev` build steps ---
-    var ziex_b = try ziex.init(b, app_exe, .{});
+    var ziex_b = try ziex.init(b, app_exe, .{
+        .app = .{
+            .server = .{ .backend = .std },
+        },
+    });
     ziex_b = ziex_b; // ignore unused
 }
